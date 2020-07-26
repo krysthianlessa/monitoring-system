@@ -3,8 +3,8 @@ import cv2
 import numpy as np
 
 class Lab:
-    _users = []
-    camera = cv2.VideoCapture(0)
+    __users = []
+    __camera = cv2.VideoCapture(0)
 
     def authenticate(self):
         known_face_encodings = [self._users[0]._face_encodings]
