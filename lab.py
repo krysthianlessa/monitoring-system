@@ -53,7 +53,7 @@ class Lab:
         self._users.append(user)
 
     def get_face_encodings(self):
-        ret, frame = self.camera.read()
+        ret, frame = self.__camera.read()
         face_encodings = face_recognition.face_encodings(frame)[0]
         return face_encodings
     

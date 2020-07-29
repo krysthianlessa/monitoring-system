@@ -1,6 +1,9 @@
 import tkinter as tk
+import face_recognition
+import cv2
 
-class RegisterUser(tk.Frame):
+
+class RegisterUser(tk.Frame):   
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
@@ -72,6 +75,8 @@ class RegisterUser(tk.Frame):
         self.take_button = tk.Button(self.container_photo, text="Tirar", width=10, command=self.take_photo)
         self.take_button.pack(side=tk.LEFT)
 
+        self.face_encodings = None
+
         self.insert_button = tk.Button(self.container_buttons, text="Inserir")
         self.insert_button.pack(side=tk.LEFT)
 
@@ -86,10 +91,24 @@ class RegisterUser(tk.Frame):
 
     
     def take_photo(self):
-        pass
+        camera = cv2.VideoCapture(0)
+
+        while True:
+            has_image, frame = camera.read()
+            if has_image:
+                cv2.imshow('Video', frame)
+            else:
+                print("No image!")
+        
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                face_encodings = face_recognition.face_encodings(frame)[0]
+                cv2.destroyAllWindows()
+                break
+        
+        print("ok!")
     
     def insert(self):
-        pass
+        user = User(self.txt_name.get(), self.txt_last_name.get(), self.txt_email.get(), self.face_encodings)
 
     def change(self):
         pass

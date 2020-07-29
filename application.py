@@ -25,6 +25,10 @@ class Application(tk.Frame):
         self.container4["pady"] = 10
         self.container4.pack()
 
+        self.container5 = tk.Frame(self)
+        self.container5["pady"] = 20
+        self.container5.pack()
+
         self.title = tk.Label(self.container1)
         self.title["text"] = "Bem vindo ao SIMONI"
         self.title["font"] = ("Verdana", "14", "bold")
@@ -42,6 +46,11 @@ class Application(tk.Frame):
 
         self.quit = tk.Button(self.container4, text="Sair", command=self.master.destroy)
         self.quit.pack()
+
+        self.rights_development = tk.Label(self.container5)
+        self.rights_development["text"] = "Desenvolvido por LED-UFBA"
+        self.rights_development["font"] = ("Verdana", "10")
+        self.rights_development.pack()
 
     def start_system(self):
         print("Iniciando SIMONI ... ")
