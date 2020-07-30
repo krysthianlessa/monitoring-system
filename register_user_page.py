@@ -3,7 +3,7 @@ import face_recognition
 import cv2
 
 
-class RegisterUser(tk.Frame):   
+class RegisterUserPage(tk.Frame):   
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master

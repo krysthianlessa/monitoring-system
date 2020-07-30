@@ -6,7 +6,7 @@ class Lab:
     __users = []
     __camera = cv2.VideoCapture(0)
 
-    def authenticate(self):
+    def to_recognize(self):
         known_face_encodings = [self._users[0]._face_encodings]
         known_face_names = [self._users[0]._name]
 
@@ -46,8 +46,12 @@ class Lab:
         self.camera.release()
         cv2.destroyAllWindows()
 
-    def to_monitor(self):
+    def to_count(self):
         pass
+
+    def to_monitor(self):
+        to_recognize()
+        to_count()
     
     def register_user(self, user):
         self._users.append(user)
@@ -57,5 +61,3 @@ class Lab:
         face_encodings = face_recognition.face_encodings(frame)[0]
         return face_encodings
     
-    def imprime_primeiro(self):
-        print(self._users[0]._name)
