@@ -2,9 +2,11 @@ import tkinter as tk
 from register_user_page import RegisterUserPage
 
 class HomePage(tk.Frame):
-    def __init__(self, master=None):
+    
+    def __init__(self, master=None, lab=None):
         super().__init__(master)
         self.master = master
+        self.lab = lab
         self.pack()
         self.create_widgets()
 
@@ -54,12 +56,11 @@ class HomePage(tk.Frame):
 
     def start_system(self):
         print("Iniciando SIMONI ... ")
-        self.newWindow = tk.Toplevel(self.master)
-        self.app = StartSystem(self.newWindow)
+        self.lab.to_monitor()
     
     def register_user(self):
         print("Registrar usuário ... ")
         self.newWindow = tk.Toplevel(self.master)
         self.newWindow.geometry("300x300")
         self.newWindow.resizable(False, False)
-        self.register_user = RegisterUserPage(self.newWindow)
+        self.register_user = RegisterUserPage(self.newWindow, lab=self.lab)

@@ -3,15 +3,18 @@ import cv2
 import numpy as np
 
 class Lab:
-    __users = []
-    __camera = cv2.VideoCapture(0)
+    
+    def __init__(self):
+        self._users = []
 
     def to_recognize(self):
+        _camera = cv2.VideoCapture(0)
+
         known_face_encodings = [self._users[0]._face_encodings]
         known_face_names = [self._users[0]._name]
 
         while True:
-            ret, frame = self.camera.read()
+            ret, frame = _camera.read()
 
             
             rgb_frame = frame[:, :, ::-1]
@@ -43,15 +46,15 @@ class Lab:
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
-        self.camera.release()
+        _camera.release()
         cv2.destroyAllWindows()
 
     def to_count(self):
         pass
 
     def to_monitor(self):
-        to_recognize()
-        to_count()
+        self.to_recognize()
+        self.to_count()
     
     def register_user(self, user):
         self._users.append(user)

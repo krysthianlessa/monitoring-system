@@ -1,12 +1,13 @@
 import tkinter as tk
 import face_recognition
 import cv2
-
+from user import User
 
 class RegisterUserPage(tk.Frame):   
-    def __init__(self, master=None):
+    def __init__(self, master=None, lab=None):
         super().__init__(master)
         self.master = master
+        self.lab = lab
         self.pack()
         self.fonte = ("Verdana", "10")
         self.create_widgets()
@@ -77,7 +78,7 @@ class RegisterUserPage(tk.Frame):
 
         self.face_encodings = None
 
-        self.insert_button = tk.Button(self.container_buttons, text="Inserir")
+        self.insert_button = tk.Button(self.container_buttons, text="Inserir", command=self.insert)
         self.insert_button.pack(side=tk.LEFT)
 
         self.change_button = tk.Button(self.container_buttons, text="Alterar")
@@ -104,11 +105,10 @@ class RegisterUserPage(tk.Frame):
                 face_encodings = face_recognition.face_encodings(frame)[0]
                 cv2.destroyAllWindows()
                 break
-        
-        print(type(face_encodings))
     
     def insert(self):
         user = User(self.txt_name.get(), self.txt_last_name.get(), self.txt_email.get(), self.face_encodings)
+        self.lab.register_user(user)
 
     def change(self):
         pass
