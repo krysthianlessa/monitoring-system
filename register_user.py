@@ -105,7 +105,7 @@ class RegisterUser(tk.Frame):
                 cv2.destroyAllWindows()
                 break
         
-        print("ok!")
+        print(type(face_encodings))
     
     def insert(self):
         user = User(self.txt_name.get(), self.txt_last_name.get(), self.txt_email.get(), self.face_encodings)
