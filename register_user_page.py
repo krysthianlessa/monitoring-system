@@ -102,13 +102,14 @@ class RegisterUserPage(tk.Frame):
                 print("No image!")
         
             if cv2.waitKey(1) & 0xFF == ord('q'):
-                face_encodings = face_recognition.face_encodings(frame)[0]
+                self.face_encodings = face_recognition.face_encodings(frame)[0]
                 cv2.destroyAllWindows()
                 break
     
     def insert(self):
+        print(type(self.face_encodings))
         user = User(self.txt_name.get(), self.txt_last_name.get(), self.txt_email.get(), self.face_encodings)
-        self.lab.register_user(user)
+        print(user.insert_user())
 
     def change(self):
         pass

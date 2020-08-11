@@ -10,6 +10,8 @@ class Lab:
     def to_recognize(self):
         _camera = cv2.VideoCapture(0)
 
+        print(self._users[0]._face_encodings)
+
         known_face_encodings = [self._users[0]._face_encodings]
         known_face_names = [self._users[0]._name]
 

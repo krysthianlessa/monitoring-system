@@ -1,6 +1,7 @@
 import tkinter as tk
 from lab import Lab
 from home_page import HomePage
+from data_base import DataBase
 
 class Application():
 
@@ -10,6 +11,8 @@ class Application():
         self._lab = Lab()
 
     def run(self):
+        data_base = DataBase()
+        print(data_base.create_table())
         root = tk.Tk(className="Simoni")
         root.geometry("300x250")
         root.resizable(False, False)
