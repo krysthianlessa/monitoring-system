@@ -30,3 +30,12 @@ class User:
             return "Usuário cadastrado com sucesso!"
         except:
             return "Ocorreu um erro na inserção do usuário"
+    
+    def update_user(self):
+        pass
+
+    def delete_user(self):
+        pass
+
+    def select_user(self, id_user):
+        pass
