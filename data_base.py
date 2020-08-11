@@ -7,7 +7,7 @@ class DataBase():
     def __init__(self):
         sqlite3.register_adapter(np.ndarray, self.adapt_array)
         sqlite3.register_converter("ARRAY", self.convert_array)
-        self.connection = sqlite3.connect('banco.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        self.connection = sqlite3.connect('database.db', detect_types=sqlite3.PARSE_DECLTYPES)
         print("Opened database successfully")
 
     def create_table(self):
